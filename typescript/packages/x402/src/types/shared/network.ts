@@ -1,12 +1,7 @@
+import { iotex } from "viem/chains";
 import { z } from "zod";
+export const NetworkSchema = z.enum(["base-sepolia", "base", "avalanche-fuji", "avalanche", "arbitrum-sepolia", "arbitrum-one", "iotex"]);
 
-export const NetworkSchema = z.enum([
-  "base-sepolia",
-  "base",
-  "avalanche-fuji",
-  "avalanche",
-  "iotex",
-]);
 export type Network = z.infer<typeof NetworkSchema>;
 
 export const SupportedEVMNetworks: Network[] = [
@@ -15,6 +10,9 @@ export const SupportedEVMNetworks: Network[] = [
   "avalanche-fuji",
   "avalanche",
   "iotex",
+  "arbitrum-sepolia",
+  "arbitrum-one",
+
 ];
 export const EvmNetworkToChainId = new Map<Network, number>([
   ["base-sepolia", 84532],
@@ -22,6 +20,8 @@ export const EvmNetworkToChainId = new Map<Network, number>([
   ["avalanche-fuji", 43113],
   ["avalanche", 43114],
   ["iotex", 4689],
+  ["arbitrum-sepolia", 421614],
+  ["arbitrum-one", 42161],
 ]);
 
 export const ChainIdToNetwork = Object.fromEntries(
